@@ -7,9 +7,7 @@
     >
       Navigate to the about page!
     </button>
-    <MapView />
-    <SearchBar />
-    <MyLocationBtn />
+    <h1>Welcome to the new porject!</h1>
   </div>
 </template>
 
@@ -17,18 +15,11 @@
 import { defineComponent } from "vue";
 import { usePlacesStore } from "@/composables";
 
-import MapView from "@/components/mapView/MapView.vue";
-import SearchBar from "@/components/searchbar/SearchBar.vue";
-import MyLocationBtn from "@/components/my-location-btn/MyLocationBtn.vue";
 import router from "@/router";
 
 export default defineComponent({
   name: "HomeView",
-  components: {
-    MapView,
-    MyLocationBtn,
-    SearchBar,
-  },
+  components: {},
   setup() {
     usePlacesStore();
 
