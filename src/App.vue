@@ -4,35 +4,24 @@
     <router-link to="/about">About</router-link>
   </nav> -->
   <router-view />
-
-  <img src="./assets/logo.png" alt="Vue" class="logo" />
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+* {
+  font-family: "Poppins", sans-serif, Avenir, Helvetica, Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-.logo {
-  bottom: 20px;
-  position: fixed;
-  right: 30px;
-  width: 80px;
+body {
+  color: #444;
+  background-color: #f3f3f3;
+  height: 100vh;
 }
 </style>
