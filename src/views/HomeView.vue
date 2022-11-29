@@ -39,7 +39,7 @@ export default defineComponent({
   setup() {
     return {
       // Methods
-      navigateToLanding: () => router.push("/landingView"),
+      navigateToLanding: () => router.push("/landing"),
     };
   },
 });

@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LandingView from "../views/LandingView.vue";
+import PaymentView from "../views/PaymentView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,9 +10,14 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: "/landingView",
-    name: "landingView",
+    path: "/landing",
+    name: "landing",
     component: LandingView,
+  },
+  {
+    path: "/payment",
+    name: "payment",
+    component: PaymentView,
   },
   {
     path: "/about",

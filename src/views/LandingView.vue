@@ -54,8 +54,12 @@
     </div>
 
     <!-- BUTTONS -->
-    <button class="btn btn-warning">Trnasfer money</button>
-    <button class="btn btn-success">Trnasfer money</button>
+    <button class="button btn btn-warning" @click="navigateToPayment">
+      Transfer money
+    </button>
+    <button class="button btn btn-success" @click="navigateToPayment">
+      Request a loan
+    </button>
 
     <!-- SUMMARY -->
     <div class="summary">
@@ -72,6 +76,7 @@
 
 <script lang="ts">
 import NavBar from "@/components/NavBar.vue";
+import router from "@/router";
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
@@ -79,7 +84,9 @@ export default defineComponent({
     NavBar,
   },
   setup() {
-    return {};
+    return {
+      navigateToPayment: () => router.push("/payment"),
+    };
   },
 });
 </script>
@@ -189,6 +196,10 @@ export default defineComponent({
   color: #f5465d;
 }
 
+.button {
+  margin-top: 10px;
+  margin-left: 10px;
+}
 .btn--sort {
   margin-left: auto;
   border: none;
