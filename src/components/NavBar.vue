@@ -3,9 +3,14 @@
     <p v-if="!isLoggedIn" class="welcome">Log in to get started</p>
     <p v-else class="welcome">Welcome back Silvia!</p>
     <img src="../assets/logo.png" alt="BanMalan logo" class="logo" />
-    <form v-if="!isLoggedIn" class="login d-flex">
-      <v-text-field label="User" variant="outlined" />
-      <v-text-field label="PIN" variant="outlined" />
+    <form v-if="!isLoggedIn" ref="form" class="login d-flex">
+      <v-text-field label="User" variant="outlined" v-model="user" />
+      <v-text-field
+        label="PIN"
+        variant="outlined"
+        v-model="pin"
+        type="number"
+      />
       <v-btn
         clss="button-login"
         icon="mdi-heart"
@@ -21,7 +26,7 @@
 
 <script lang="ts">
 import router from "@/router";
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent, ref } from "@vue/runtime-core";
 
 export default defineComponent({
   name: "NavBar",
@@ -29,9 +34,20 @@ export default defineComponent({
     isLoggedIn: { type: Boolean, default: false },
   },
   setup() {
+    const user = ref("");
+    const pin = ref("");
+
+    const navigateToLanding = () => {
+      if (user.value == "") return alert("The user is required");
+      if (pin.value == "") return alert("The pin is required");
+      router.push("/landing");
+    };
+
     return {
-      navigateToLanding: () => router.push("/landingView"),
+      navigateToLanding,
       logout: () => router.push("/"),
+      user,
+      pin,
     };
   },
 });
@@ -53,21 +69,8 @@ nav {
   font-weight: 500;
 }
 .logo {
-  height: 3.25rem;
-  width: 3.25rem;
-}
-.login__input {
-  border: none;
-  padding: 0.5rem 2rem;
-  font-size: 1.6rem;
-  font-family: inherit;
-  text-align: center;
-  width: 12rem;
-  border-radius: 10rem;
-  margin-right: 1rem;
-  color: inherit;
-  border: 1px solid #fff;
-  transition: all 0.3s;
+  height: 55px;
+  width: 55px;
 }
 .v-input {
   margin-right: 10px;
@@ -81,5 +84,28 @@ nav {
 
 .button-login {
   color: white !important;
+}
+
+@media screen and (max-width: 680px) {
+  .login-navbar {
+    display: flex;
+    flex-direction: column;
+  }
+  .welcome {
+    display: none;
+  }
+
+  .logo {
+    height: 30px;
+    width: 30px;
+  }
+
+  .v-input {
+    display: none;
+  }
+
+  .v-btn {
+    display: none;
+  }
 }
 </style>

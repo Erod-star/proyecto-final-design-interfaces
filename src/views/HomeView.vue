@@ -16,10 +16,10 @@
         <p>You only need to sign in it's so easy!</p>
         <button
           type="button"
-          class="btn btn-outline-secondary"
+          class="botonsin btn btn-outline-secondary"
           @click="navigateToLanding"
         >
-          Go to your account!!
+          Go to your account
         </button>
       </div>
     </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import NavBar from "@/components/NavBar.vue";
 import router from "@/router";
 
@@ -37,9 +37,12 @@ export default defineComponent({
     NavBar,
   },
   setup() {
+    const isFormActive = ref(false);
+
     return {
       // Methods
       navigateToLanding: () => router.push("/landing"),
+      showForm: () => (isFormActive.value = !isFormActive.value),
     };
   },
 });
@@ -82,6 +85,7 @@ export default defineComponent({
   width: 80%;
   justify-content: center;
   align-items: center;
+  transition: ease 300ms all;
 }
 
 .home-content-details h3 {
@@ -89,5 +93,30 @@ export default defineComponent({
 }
 .home-content-details p {
   font-size: 20px;
+}
+
+@media screen and (max-width: 580px) {
+  .home-content h1 {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .wallpaper {
+    width: 100%;
+    height: 250px;
+  }
+
+  .home-content-details {
+    height: 160px;
+  }
+  .home-content-details h3 {
+    font-size: 18px;
+  }
+  .home-content-details p {
+    font-size: 10px;
+  }
+  .botonsin {
+    transform: scale(0.7);
+  }
 }
 </style>
